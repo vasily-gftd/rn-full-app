@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useReducer } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Header from './components/Header'
-import StartGameScreen from './screens/StartGameScreen';
-import GameScreen from './screens/GameScreen';
+import Header from './components/js/Header'
+import StartGameScreen from './components/js/StartGameScreen';
+import GameScreen from './components/js/GameScreen';
 import GameOverScreen from './screens/GameOverScreen'
 
 

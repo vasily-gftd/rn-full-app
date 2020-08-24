@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, Alert } from 'react-native';
-import NumberContainer from '../components/NumberContainer'
-import Card from '../components/Card'
+import NumberContainer from './NumberContainer'
+import Card from './Card'
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
