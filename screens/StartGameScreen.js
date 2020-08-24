@@ -12,14 +12,15 @@ import {
 import Card from '../components/Card';
 import colors from '../constants/colors';
 import Input from '../components/Input';
-const StartGameScreen = props => {
+import NumberContainer from '../components/NumberContainer';
 
+const StartGameScreen = props => {
   const [enteredValue, setEnteredValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
   
-  const numberInputWandler = inputText => {
-    setEnteredValue(inputText.replace(/[^0-9]/g, ' '));
+  const numberInputHandler = inputText => {
+    setEnteredValue(inputText.replace(/[^0-9]/g, ''));
 
   const resetInputHandler = () => {
     setEnteredValue('');
@@ -28,24 +29,27 @@ const StartGameScreen = props => {
 
   const confirmInputHandler = () => {
     const chosenNumber = parseInt(enteredValue);
-    if (chosenNumber === NaN || chosenNumber <= 0 || chosenNumber > 99) {
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(
-        'Invalid nymber!', Number shoyld be 1-99, [{text 'okay', style: 'destructive', onPres: resetInputHandler}];
-      )
+        'Invalid number!', 'Number should be 1-99', [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler}]
+        );
       return;
     }
     setConfirmed(true);
     setSelectedNumber(chosenNumber);
     setEnteredValue('');
+    Keyboard.dismiss();
     };
 
     let confirmedOutput;
 
     if(confirmed) {
-      confirmedOutput = <Text>Chosen Number: {selectedNumber}</Text>
+      confirmedOutput = <Card style={styles.summaryContainer}>
+        <Text>You selected</Text>
+        <NumberContainer>{selectedNumber}</NumberContainer>
+        <Button title="START GAME" onPress={() => props.onStartGame()} />
+        </Card>
     };
-
-  
   };
 
   return (
@@ -61,14 +65,14 @@ const StartGameScreen = props => {
               autoCorrect={false}
               keyboardType="number-pad"
               maxLenght={2} 
-              onChangeText={numberInputWandler}
+              onChangeText={numberInputHandler}
             />
             <View style={styles.buttonContainer}>
               <View style={styles.button}>
                 <Button 
-                  title="Reset" 
-                  onPress={resetInputHandler} 
-                  color={colors.accent} 
+                  title="Reset"
+                  onPress={resetInputHandler}
+                  color={colors.accent}
                 />
               </View>
               <View style={styles.button}>
@@ -113,6 +117,10 @@ const styles = StyleSheet.create({
   input: {
     width: 50,
     textAlign: 'center'
+  }, 
+  summaryContainer: {
+  margin: 20, 
+  alignItems: 'center'
   }
 });
 
