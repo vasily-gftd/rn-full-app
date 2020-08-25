@@ -14,12 +14,12 @@ import colors from '../constants/colors';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
 
-const StartGameScreen = props => {
+const StartGameScreen = (props: { onStartGame: () => void; }) => {
   const [enteredValue, setEnteredValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
   
-  const numberInputHandler = inputText => {
+  const numberInputHandler = (inputText: string) => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ''))};
 
   const resetInputHandler = () => {
@@ -62,9 +62,9 @@ const StartGameScreen = props => {
         <Text style={styles.title}>Start a new game</Text>
         <Card style={styles.inputContainer}>
             <Text>Select a Number</Text>
-            <Input 
-              style={styles.input} 
-              blurOnSubmit
+            <TextInput 
+              {...styles.input} 
+              blurOnSubmit={true}
               autoCapitalize="none"
               autoCorrect={false}
               keyboardType="number-pad"
