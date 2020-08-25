@@ -31,16 +31,20 @@ const StartGameScreen = props => {
     const chosenNumber = parseInt(enteredValue);
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(
-        'Invalid number!', 'Number should be 1-99', [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler}]
-        );
+          'Invalid number!', 
+          'Number should be 1-99', 
+          [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler}]
+      );
+
       return;
     }
-    setConfirmed(true);
-    setSelectedNumber(chosenNumber);
-    setEnteredValue('');
-    Keyboard.dismiss();
+      setConfirmed(true);
+      setSelectedNumber(chosenNumber);
+      setEnteredValue('');
+      Keyboard.dismiss();
     };
 
+    
     let confirmedOutput;
 
     if(confirmed) {

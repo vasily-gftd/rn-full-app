@@ -11,13 +11,15 @@ export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [guessRounds, setGuessRounds] = useState(0);
 
-  const configureNewGameHandler = (setUserNumber: React.SetStateAction<any>) => {
-    setGuessRounds(0);
+  const configureNewGameHandler = (setUserNumber: React.SetStateAction<any>) => 
+    {setGuessRounds(0);
     setUserNumber(null);
   }
 
-  const startGameHandler = (selectedNumber: React.SetStateAction<undefined>) => {setUserNumber(selectedNumber)};
-  setGuessRounds(0);
+  const startGameHandler = (selectedNumber: React.SetStateAction<undefined>) => 
+    {setUserNumber(selectedNumber);
+    setGuessRounds(0);
+  };
 
   const gameOverHandler = (numOfRounds: React.SetStateAction<number>) => {
     setGuessRounds(numOfRounds);
