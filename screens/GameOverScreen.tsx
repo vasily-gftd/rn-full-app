@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
-const GameOverScreen = props => {
+const GameOverScreen = (props: { roundsNumber: React.ReactNode; userNumber: React.ReactNode; onRestart: (ev: import("react-native").NativeSyntheticEvent<import("react-native").NativeTouchEvent>) => void; }) => {
   return (
     <View style={styles.screen}>
       <Text>The Game is Over!</Text>
