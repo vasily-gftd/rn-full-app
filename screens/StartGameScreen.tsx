@@ -9,7 +9,7 @@ import {
   Keyboard, 
   Alert } 
   from "react-native";
-import Card from '../Components/Card';
+import Card from '../components/Card';
 import colors from '../constants/colors';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
