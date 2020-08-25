@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useReducer } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Header from './components/js/Header'
-import StartGameScreen from './components/js/StartGameScreen';
-import GameScreen from './components/js/GameScreen';
+import Header from './components/Header'
+import StartGameScreen from './screens/StartGameScreen';
+import GameScreen from './screens/GameScreen';
 import GameOverScreen from './screens/GameOverScreen'
 
 
@@ -11,15 +11,15 @@ export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [guessRounds, setGuessRounds] = useState(0);
 
-  const configureNewGameHandler = () => {
+  const configureNewGameHandler = (setUserNumber: React.SetStateAction<any>) => {
     setGuessRounds(0);
     setUserNumber(null);
-  };
+  }
 
-  const startGameHandler = (selectedNumber) => {setUserNumber(selectedNumber)};
+  const startGameHandler = (selectedNumber: React.SetStateAction<undefined>) => {setUserNumber(selectedNumber)};
   setGuessRounds(0);
 
-  const gameOverHandler = numOfRounds => {
+  const gameOverHandler = (numOfRounds: React.SetStateAction<number>) => {
     setGuessRounds(numOfRounds);
   }
 
