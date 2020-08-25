@@ -20,14 +20,14 @@ const StartGameScreen = props => {
   const [selectedNumber, setSelectedNumber] = useState();
   
   const numberInputHandler = inputText => {
-    setEnteredValue(inputText.replace(/[^0-9]/g, ''));
+    setEnteredValue(inputText.replace(/[^0-9]/g, ''))};
 
   const resetInputHandler = () => {
     setEnteredValue('');
     setConfirmed(false);
     };
 
-  const confirmInputHandler = () => {
+  const confirmInputHandler = (setSelectedNumber) => {
     const chosenNumber = parseInt(enteredValue);
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(
@@ -50,7 +50,7 @@ const StartGameScreen = props => {
         <Button title="START GAME" onPress={() => props.onStartGame()} />
         </Card>
     };
-  };
+  
 
   return (
     <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss}}>
@@ -64,7 +64,7 @@ const StartGameScreen = props => {
               autoCapitalize="none"
               autoCorrect={false}
               keyboardType="number-pad"
-              maxLenght={2} 
+              maxLength={2} 
               onChangeText={numberInputHandler}
             />
             <View style={styles.buttonContainer}>
